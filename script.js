@@ -99,9 +99,6 @@ const icons = [
 let contentHTML = document.querySelector(".icons-content"); 
 
 //CREO COPIA DELL'ARRAY ORIGINALE
-const iconsFiltrate = icons.map((element)=>{
-    return element;
-})
 
 //CREO UNA FUNZIONE PER FILTRARE ARRAY ORIGINALE DIPENDENDO DALLA SCELTA
 //DALL' UTENTE E RITORNA IN UN NUOVO 
@@ -111,7 +108,7 @@ const iconsFiltrate = icons.map((element)=>{
  * @param {*} originalArray 
  */
 function filterIcons (scelta, originalArray){
-    const newArray = originalArray.filter((icon)=>{
+    return originalArray.filter((icon)=>{
         if(scelta === "all"){
             return true;
         }
@@ -121,18 +118,37 @@ function filterIcons (scelta, originalArray){
         return false;
     });
 }
-iconsFiltrate.forEach((icon)=>{
-    const { name, prefix, family, type} = icon; //destrutturazione
+// CREO UNA FUNZIONE PER MANDARE A SCHERMO LE ICONE
+// RICHIESTE DALL'UTENTE
+function listIconsHTML (filter){
 
-    contentHTML.innerHTML += 
-    `
-    <div class="icon-box col">
-        <div class="icona-inner">
-            <div class="icona ${type}"> 
-                <i class="${family} ${prefix}${name}"></i>
-            </div>             
-            <div class="name">${name}</div>
-        </div>        
-    </div>
-    `
+    const iconsFiltrate = filterIcons(filter, icons);//chiamo la funzione creata a riga 110
+    //(x, a) x = nome della funzione a riga 123 a = nome array originale.
+
+    contentHTML.innerHTML = ""; //per resettare ogni volta
+
+    iconsFiltrate.forEach((icon)=>{
+
+        const { name, prefix, family, type} = icon; //destrutturazione
+    
+        contentHTML.innerHTML += 
+        `
+        <div class="icon-box col">
+            <div class="icona-inner">
+                <div class="icona ${type}"> 
+                    <i class="${family} ${prefix}${name}"></i>
+                </div>             
+                <div class="name">${name}</div>
+            </div>        
+        </div>
+        `
+    });
+}
+
+listIconsHTML("all");
+
+const selectElement = document.querySelector(".selettore");
+
+selectElement.addEventListener('change',(event)=>{
+    listIconsHTML(event.value);
 });
