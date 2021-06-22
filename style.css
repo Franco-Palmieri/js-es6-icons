@@ -1,0 +1,14 @@
+.icons-content{
+    flex-wrap: wrap;
+}
+.icon-box{
+    display: flex;
+    flex-basis: calc(100% / 5);
+    border: 1px solid #cccccc;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+i{
+    font-size: 25px;
+}
