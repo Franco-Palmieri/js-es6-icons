@@ -98,20 +98,41 @@ const icons = [
 ];
 let contentHTML = document.querySelector(".icons-content"); 
 
-icons.forEach((icon)=>{
-    const { name, prefix, family, type} = icon;
+//CREO COPIA DELL'ARRAY ORIGINALE
+const iconsFiltrate = icons.map((element)=>{
+    return element;
+})
+
+//CREO UNA FUNZIONE PER FILTRARE ARRAY ORIGINALE DIPENDENDO DALLA SCELTA
+//DALL' UTENTE E RITORNA IN UN NUOVO 
+/**
+ *Filtra originalList dipendendo dalla scelta 
+ * @param {*} scelta 
+ * @param {*} originalArray 
+ */
+function filterIcons (scelta, originalArray){
+    const newArray = originalArray.filter((icon)=>{
+        if(scelta === "all"){
+            return true;
+        }
+        if(choice === icon.type){
+            return true;
+        }
+        return false;
+    });
+}
+iconsFiltrate.forEach((icon)=>{
+    const { name, prefix, family, type} = icon; //destrutturazione
 
     contentHTML.innerHTML += 
     `
     <div class="icon-box col">
         <div class="icona-inner">
-            <div class="icona ${type}">
+            <div class="icona ${type}"> 
                 <i class="${family} ${prefix}${name}"></i>
-            </div>            
+            </div>             
             <div class="name">${name}</div>
-        </div>
-        
+        </div>        
     </div>
-    
     `
-})
+});
