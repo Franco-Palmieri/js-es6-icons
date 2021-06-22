@@ -99,15 +99,18 @@ const icons = [
 let contentHTML = document.querySelector(".icons-content"); 
 
 icons.forEach((icon)=>{
-    const { name, prefix, family} = icon;
+    const { name, prefix, family, type} = icon;
 
     contentHTML.innerHTML += 
     `
-    <div class="icon-box">
-        <div class="icona">
-            <i class="${family} ${prefix}${name}"></i>
+    <div class="icon-box col">
+        <div class="icona-inner">
+            <div class="icona ${type}">
+                <i class="${family} ${prefix}${name}"></i>
+            </div>            
+            <div class="name">${name}</div>
         </div>
-        <div class="name">${name}</div>
+        
     </div>
     
     `

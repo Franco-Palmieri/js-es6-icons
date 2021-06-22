@@ -1,14 +1,44 @@
+.icons-container{
+    background-color: #ddd;
+}
 .icons-content{
     flex-wrap: wrap;
 }
 .icon-box{
-    display: flex;
     flex-basis: calc(100% / 5);
-    border: 1px solid #cccccc;
-    flex-wrap: wrap;
-    justify-content: center;
+    max-width: calc(100% / 5);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.icona-inner{
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+}
+.icona-inner .icona{
+    width: 100%;
 }
 i{
-    font-size: 25px;
+    font-size: 30px;
+}
+.icona-inner .name{
+    width: 100%;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+.user{
+    color: purple;
+}
+.vegetable{
+    color:orange
+}
+.animal{
+    color:blue
 }
