@@ -112,7 +112,7 @@ function filterIcons (scelta, originalArray){
         if(scelta === "all"){
             return true;
         }
-        if(choice === icon.type){
+        if(scelta === icon.type){
             return true;
         }
         return false;
@@ -149,6 +149,6 @@ listIconsHTML("all");
 
 const selectElement = document.querySelector(".selettore");
 
-selectElement.addEventListener('change',(event)=>{
-    listIconsHTML(event.value);
+selectElement.addEventListener('change', (event)=>{
+    listIconsHTML(event.target.value);
 });
